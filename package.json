@@ -4,7 +4,9 @@
   "description": "",
   "main": "app.js",
   "dependencies": {
-    "google-spreadsheet": "^1.0.1"
+    "crawler": "^0.4.3",
+    "google-spreadsheet": "^1.0.1",
+    "sleep": "^3.0.0"
   },
   "devDependencies": {},
   "scripts": {
@@ -19,7 +21,6 @@
     "crawler"
   ],
   "author": "slash",
-
   "bugs": {
     "url": "https://github.com/slashtu/stock-crawler/issues"
   },
