@@ -9,6 +9,7 @@ var creds = require('./stock-dd612dc6478e.json');
 
 var stock = [];
 
+// load many data
 function add( index, sheet ){
 
     var day = stock[index];
