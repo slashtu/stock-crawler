@@ -6,7 +6,7 @@
   "dependencies": {
     "crawler": "^0.4.3",
     "google-spreadsheet": "^1.0.1",
-    "sleep": "^3.0.0"
+    "mongoose": "^4.2.5"
   },
   "devDependencies": {},
   "scripts": {

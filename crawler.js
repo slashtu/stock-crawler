@@ -1,7 +1,11 @@
+/*
+This is a simple
+Store to Google Sheets 
+*/
+
 var Crawler = require("crawler");
 var url = require('url');
 var GoogleSpreadsheet = require("google-spreadsheet");
-var sleep = require('sleep');
 
 var my_sheet = new GoogleSpreadsheet('1zb7vt_nBFmVJUFwhNJPlLkN1NFlDOmdHsZPRV_bmVi0');
  
