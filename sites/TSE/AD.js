@@ -7,14 +7,14 @@
 */
 
 var Crawler = require("crawler");
-var mongoose = require('mongoose');
+// var mongoose = require('mongoose');
 
-// connect db
-mongoose.connect('mongodb://localhost/stock');
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function (callback) {
-});
+// // connect db
+// mongoose.connect('mongodb://localhost/stock');
+// var db = mongoose.connection;
+// db.on('error', console.error.bind(console, 'connection error:'));
+// db.once('open', function (callback) {
+// });
 
 // schema
 var ADSchema = mongoose.Schema({
@@ -40,7 +40,7 @@ ADSchema.pre('save', function(next){
     })
 })
 
-var all = function all(){
+var update = function update(){
 
     var stock = [];
 
