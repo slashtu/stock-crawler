@@ -7,44 +7,34 @@
 */
 
 var Crawler = require("crawler");
-// var mongoose = require('mongoose');
 
-// // connect db
-// mongoose.connect('mongodb://localhost/stock');
-// var db = mongoose.connection;
-// db.on('error', console.error.bind(console, 'connection error:'));
-// db.once('open', function (callback) {
-// });
+var update = function update( mongoose ){
 
-// schema
-var ADSchema = mongoose.Schema({
-    adv: Number,
-    dec: Number,
-    date: {type: Date}
-});
+    var ADSchema = mongoose.Schema({
+        adv: Number,
+        dec: Number,
+        date: {type: Date}
+    });
 
-// model
-var AD = mongoose.model('AD', ADSchema);
+    // model
+    var AD = mongoose.model('AD', ADSchema);
 
-ADSchema.pre('save', function(next){
+    ADSchema.pre('save', function(next){
 
-    var self = this;
+        var self = this;
 
-    AD.find({date: self.date}, function(err, docs){
-        if(docs.length){
-            // console.log('exist');
-        }else{
-            // console.log('gg');
-            next();
-        }
+        AD.find({date: self.date}, function(err, docs){
+            if(docs.length){
+                // console.log('exist');
+            }else{
+                // console.log('gg');
+                next();
+            }
+        })
     })
-})
-
-var update = function update(){
 
     var stock = [];
 
- 
     var c = new Crawler({
 
         // This will be called for each crawled page 
