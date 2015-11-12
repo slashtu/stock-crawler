@@ -5,6 +5,7 @@ mongoose.connect('mongodb://localhost/stock');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function (callback) {
+//success
 });
 
 var TSE_AD = require("./sites/TSE/AD.js");
