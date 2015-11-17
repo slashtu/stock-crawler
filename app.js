@@ -14,5 +14,5 @@ var EightMajorTrader = require("./sites/TSE/8majorTrader.js");
  
 // TSE
 //TSE_AD.update(mongoose);
-TSE_AD_limit.update(mongoose);
+//TSE_AD_limit.update(mongoose);
 EightMajorTrader.update(mongoose);
