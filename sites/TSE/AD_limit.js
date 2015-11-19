@@ -1,8 +1,8 @@
 /*
 
-  http://2330.tw/TSE_Main.aspx
+  http://2330.tw/TSE_Main.aspx?kind=b
 
-  上漲家數  下跌家數  
+  漲跌停家數
 
 */
 
@@ -17,7 +17,7 @@ var update = function update( mongoose ){
     });
 
     // model
-    var AD = mongoose.model('AD', ADSchema);
+    var AD = mongoose.model('ADLimit', ADSchema);
 
     ADSchema.pre('save', function(next){
 
@@ -34,13 +34,12 @@ var update = function update( mongoose ){
     })
 
     var stock = [];
-
+ 
     var c = new Crawler({
 
         // This will be called for each crawled page 
         callback : function (error, result, $) {
-            // $ is Cheerio by default 
-            //a lean implementation of core jQuery designed specifically for the server 
+
             $('#history').each(function(index, div) {
 
                 var data = div.children[0].data.split('|');
@@ -54,24 +53,19 @@ var update = function update( mongoose ){
                         stock.push({ adv: adv, dec: dec, date: new Date(date) });
                 });
 
-                stock.forEach(function(day, i){
+                stock.forEach(function(day){
                     var ad = new AD({adv: day.adv, dec: day.dec, date: new Date(day.date)});
-
-
-                    if( i === stock.length )
-                        ad.save(function(){ console.log('AD '+i); });
-                    else 
-                        ad.save(function(){ console.log('AD '+i); });
+                    ad.save();
                 });
 
-                console.log( 'TSE AD Success ' + new Date() + ' date: ' + stock[0].date );
+                console.log( 'TSE AD Limit Success ' + new Date() + ' date: ' + stock[0].date );
                 // process.exit()
             });
         }
     });
  
     // Queue just one URL, with default callback 
-    c.queue('http://2330.tw/TSE_Main.aspx');
+    c.queue('http://2330.tw/TSE_Main.aspx?kind=b');
 }
 
 module.exports = { update: update };

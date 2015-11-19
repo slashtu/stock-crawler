@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var lib = require('./lib.js');
 
 // connect db
 mongoose.connect('mongodb://localhost/stock');
@@ -11,8 +12,18 @@ db.once('open', function (callback) {
 var TSE_AD = require("./sites/TSE/AD.js");
 var TSE_AD_limit = require("./sites/TSE/AD_limit.js");
 var EightMajorTrader = require("./sites/TSE/8majorTrader.js");
+var TSE_Lending = require("./sites/TSE/Lending.js");
+var TSE_HundredTen = require("./sites/TSE/Hundred_ten.js");
  
 // TSE
-//TSE_AD.update(mongoose);
-//TSE_AD_limit.update(mongoose);
-EightMajorTrader.update(mongoose);
+TSE_AD.update(mongoose);
+// TSE_AD_limit.update(mongoose);
+// EightMajorTrader.update(mongoose);
+// TSE_Lending.update(mongoose);
+TSE_HundredTen.update(mongoose);
+
+// mongoose.connection.close();
+// mongoose.disconnect();
+// lib.closeDB(mongoose);
+
+setTimeout( function(){mongoose.disconnect();}, 1000 * 60 * 60);
