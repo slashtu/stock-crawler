@@ -68,6 +68,8 @@ var update = function update( mongoose ){
 
             var fundthree = new FundThree({ selfSelf: selfSelf, date: today });
             fundthree.save();
+
+            console.log( 'FundThree Success', today);
         }
     });
  

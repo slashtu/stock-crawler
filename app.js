@@ -19,11 +19,11 @@ var TSE_Lending = require("./sites/TSE/Lending.js");
 var TSE_HundredTen = require("./sites/TSE/Hundred_ten.js");
  
 // task
-// TSE_AD.update(mongoose);
-// TSE_AD_limit.update(mongoose);
-// EightMajorTrader.update(mongoose);
-// TSE_Lending.update(mongoose);
-// TSE_HundredTen.update(mongoose);
+TSE_AD.update(mongoose);
+TSE_AD_limit.update(mongoose);
+EightMajorTrader.update(mongoose);
+TSE_Lending.update(mongoose);
+TSE_HundredTen.update(mongoose);
 
 // ======================= wearn =========================
 
