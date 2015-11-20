@@ -56,12 +56,7 @@ var update = function update( mongoose ){
 
                 stock.forEach(function(day, i){
                     var ad = new AD({adv: day.adv, dec: day.dec, date: new Date(day.date)});
-
-
-                    if( i === stock.length )
-                        ad.save(function(){ console.log('AD '+i); });
-                    else 
-                        ad.save(function(){ console.log('AD '+i); });
+                    ad.save();
                 });
 
                 console.log( 'TSE AD Success ' + new Date() + ' date: ' + stock[0].date );

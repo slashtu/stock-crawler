@@ -59,12 +59,7 @@ var update = function update( mongoose ){
                 stock.forEach(function(day , i){
                     var trade = new HundredTenModel({ hundred: day.hundred, ten: day.ten, date: new Date(day.date)}); 
 
-                    // console.log('foreach ' + i)
-
-                    if( i === stock.length )
-                        trade.save(function(){ console.log('100 ' + i); });
-                    else 
-                        trade.save(function(){ console.log('100 ' + i); });
+                    trade.save();
                 });
 
                 console.log( 'HundredTen Success ' + new Date() + ' date: ' + stock[0].date );
