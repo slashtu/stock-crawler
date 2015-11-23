@@ -30,7 +30,10 @@ var update = function update( mongoose ){
 
     var FundThreeSchema = mongoose.Schema({
         selfSelf: { buy: Number, sell: Number, diff: Number },
-        date: Date
+        selfHedge: { buy: Number, sell: Number, diff: Number },
+        tau: { buy: Number, sell: Number, diff: Number },
+        wai: { buy: Number, sell: Number, diff: Number },
+        date: Date,
     });
 
     // model
@@ -66,7 +69,7 @@ var update = function update( mongoose ){
 
             var today = getDate( $('.stockalllistbg6')[0] );
 
-            var fundthree = new FundThree({ selfSelf: selfSelf, date: today });
+            var fundthree = new FundThree({ selfSelf: selfSelf, selfHedge: selfHedge, tau: tau, wai: wai, date: today });
             fundthree.save();
 
             console.log( 'FundThree Success', today);

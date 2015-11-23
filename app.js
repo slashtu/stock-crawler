@@ -28,10 +28,11 @@ TSE_HundredTen.update(mongoose);
 // ======================= wearn =========================
 
 var fundthree = require("./sites/wearn/fundthree.js");
+var taifexphoto = require("./sites/wearn/taifexphoto.js");
 
 //task
 fundthree.update(mongoose);
-
+taifexphoto.update(mongoose);
 
 
 setTimeout( function(){mongoose.disconnect();}, 1000 * 60 * 60);
