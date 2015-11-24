@@ -22,8 +22,6 @@ function getValue( tr ){
 
     var value = { date: date, top5: top5, top10: top10, top5sp: top5sp, top10sp: top10sp, wai: wai, tau: tau, self: self, close: close }
 
-    // console.log( value )
-
     return value;
 }
 
