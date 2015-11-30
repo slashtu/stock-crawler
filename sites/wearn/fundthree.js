@@ -7,6 +7,7 @@
 */
 
 var Crawler = require("crawler");
+var Lib = require("../../lib.js");
 
 function getValue( tr ){
     
@@ -23,7 +24,7 @@ function getValue( tr ){
 }
 
 function getDate( tr ){
-    return new Date(tr.children[1].children[0].data);
+    return tr.children[1].children[0].data;
 }
 
 var update = function update( mongoose ){
@@ -69,7 +70,9 @@ var update = function update( mongoose ){
 
             var today = getDate( $('.stockalllistbg6')[0] );
 
-            var fundthree = new FundThree({ selfSelf: selfSelf, selfHedge: selfHedge, tau: tau, wai: wai, date: today });
+            today = Lib.formatTimeTwaiwanToCE(today);
+
+            var fundthree = new FundThree({ selfSelf: selfSelf, selfHedge: selfHedge, tau: tau, wai: wai, date: new Date(today) });
             fundthree.save();
 
             console.log( 'FundThree Success', today);

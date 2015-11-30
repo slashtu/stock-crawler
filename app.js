@@ -30,8 +30,8 @@ var fundthree = require("./sites/wearn/fundthree.js");
 var taifexphoto = require("./sites/wearn/taifexphoto.js");
 
 //task
-fundthree.update(mongoose); //time error
-taifexphoto.update(mongoose); //time error
+fundthree.update(mongoose); 
+taifexphoto.update(mongoose); 
 
 // ======================= twse =========================
 
@@ -40,9 +40,9 @@ var TWT38U = require("./sites/twse/TWT38U.js");
 var TWT43U = require("./sites/twse/TWT43U.js");
 
 //task
-TWT44U.update(mongoose); //time error
-TWT38U.update(mongoose); //time error
-TWT43U.update(mongoose); //time error
+TWT44U.update(mongoose); 
+TWT38U.update(mongoose); 
+TWT43U.update(mongoose); 
 
 // ======================= mops =========================
 var t90sb03 = require("./sites/mops/t90sb03.js");

@@ -7,6 +7,7 @@
 */
 
 var Crawler = require("crawler");
+var Lib = require("../../lib.js");
 
 function getValue( tr ){
 
@@ -53,6 +54,8 @@ var update = function update( mongoose ){
             var stock = [];
 
             var date = $("input[name='qdate']")[0].attribs.value;
+
+            date = Lib.formatTimeTwaiwanToCE(date);
             
             $('tbody tr').each( function( index, tr ){
 

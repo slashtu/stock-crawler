@@ -7,6 +7,7 @@
 */
 
 var Crawler = require("crawler");
+var Lib = require("../../lib.js");
 
 function getValue( tr ){
    
@@ -68,11 +69,7 @@ var update = function update( mongoose ){
 
             var date = $('span[class="note"]')[0].children[0].data.replace(/(\n)+/g, '').substring(5,14);
 
-            var year = parseFloat(date.split('/')[0]) + 1911;
-            var month = parseFloat(date.split('/')[1]);
-            var day = parseFloat(date.split('/')[2]);
-
-            var today = [ year, month, day ].join('/');
+            var today = Lib.formatTimeTwaiwanToCE(date);
 
             var stock = [];
             

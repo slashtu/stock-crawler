@@ -7,10 +7,11 @@
 */
 
 var Crawler = require("crawler");
+var Lib = require("../../lib.js");
 
 function getValue( tr ){
 
-    var date = tr.children[1].children[0].data;
+    var date = Lib.formatTimeTwaiwanToCE(tr.children[1].children[0].data);
     var top5 = tr.children[3].children[0].children[0].data;
     var top10 = tr.children[5].children[0].children[0].data;
     var top5sp = tr.children[7].children[0].children[0].data;
