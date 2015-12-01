@@ -50,4 +50,9 @@ var t90sb03 = require("./sites/mops/t90sb03.js");
 //task
 t90sb03.update(mongoose);
 
+
+// var test = require("./test.js");
+
+// test.update(mongoose);
+
 setTimeout( function(){mongoose.disconnect();}, 1000 * 60 * 60);
