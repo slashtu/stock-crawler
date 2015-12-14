@@ -59,7 +59,9 @@ var update = function update( mongoose ){
                     ad.save();
                 });
 
-                console.log( 'TSE AD Success ' + new Date() + ' date: ' + stock[0].date );
+                console.log(stock)
+
+                console.log( 'TSE AD Success ' + new Date() + ' date: ' + stock.length );
                 // process.exit()
             });
         }

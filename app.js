@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var lib = require('./lib.js');
-
+// should call apis
 // connect db
 mongoose.connect('mongodb://localhost/stock');
 var db = mongoose.connection;
