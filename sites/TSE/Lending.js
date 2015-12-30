@@ -7,6 +7,7 @@
 */
 
 var Crawler = require("crawler");
+var Lib = require('../../lib.js');
 
 var update = function update( mongoose ){
 
@@ -54,10 +55,12 @@ var update = function update( mongoose ){
                         stock.push({ short: short, balance: balance, date: new Date(date) });
                 });
 
-                stock.forEach(function(day){
-                    var trade = new LendingTraderModel({ short: day.short, balance: day.balance, date: new Date(day.date)});
-                    trade.save();
-                });
+                Lib.upload2('Lending', stock.slice(0))
+
+                // stock.forEach(function(day){
+                //     var trade = new LendingTraderModel({ short: day.short, balance: day.balance, date: new Date(day.date)});
+                //     trade.save();
+                // });
 
                 console.log( 'TSE_Lending Success ' + new Date() + ' date: ' + stock[0].date );
                 // process.exit()

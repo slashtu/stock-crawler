@@ -7,6 +7,7 @@
 */
 
 var Crawler = require("crawler");
+var Lib = require('../../lib.js');
 
 var update = function update( mongoose ){
 
@@ -53,10 +54,12 @@ var update = function update( mongoose ){
                         stock.push({ adv: adv, dec: dec, date: new Date(date) });
                 });
 
-                stock.forEach(function(day){
-                    var ad = new AD({adv: day.adv, dec: day.dec, date: new Date(day.date)});
-                    ad.save();
-                });
+                Lib.upload2( 'ADLimit', stock.slice(0) );
+
+                // stock.forEach(function(day){
+                //     var ad = new AD({adv: day.adv, dec: day.dec, date: new Date(day.date)});
+                //     ad.save();
+                // });
 
                 console.log( 'TSE AD Limit Success ' + new Date() + ' date: ' + stock[0].date );
                 // process.exit()

@@ -7,6 +7,7 @@
 */
 
 var Crawler = require("crawler");
+var Lib = require('../../lib.js');
 
 var update = function update( mongoose ){
 
@@ -52,10 +53,12 @@ var update = function update( mongoose ){
                         stock.push({ trade: trade, date: new Date(date) });
                 });
 
-                stock.forEach(function(day){
-                    var trade = new EightMjorTraderModel({ trade: day.trade, date: new Date(day.date)});
-                    trade.save();
-                });
+                Lib.upload2( 'EightMajorTrader', stock.slice(0) )
+
+                // stock.forEach(function(day){
+                //     var trade = new EightMjorTraderModel({ trade: day.trade, date: new Date(day.date)});
+                //     trade.save();
+                // });
 
                 console.log( 'TSE EightMjorTraderModel Success ' + new Date() + ' date: ' + stock[0].date );
                 // process.exit()

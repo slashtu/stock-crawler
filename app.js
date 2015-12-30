@@ -55,4 +55,4 @@ t90sb03.update(mongoose);
 
 // test.update(mongoose);
 
-setTimeout( function(){mongoose.disconnect();}, 1000 * 60 * 60);
+setTimeout( function(){mongoose.disconnect();}, 1000 * 60 * 10);

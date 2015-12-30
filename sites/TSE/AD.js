@@ -6,7 +6,8 @@
 
 */
 
-var Crawler = require("crawler");
+var Crawler = require('crawler');
+var Lib = require('../../lib.js')
 
 var update = function update( mongoose ){
 
@@ -54,12 +55,17 @@ var update = function update( mongoose ){
                         stock.push({ adv: adv, dec: dec, date: new Date(date) });
                 });
 
-                stock.forEach(function(day, i){
-                    var ad = new AD({adv: day.adv, dec: day.dec, date: new Date(day.date)});
-                    ad.save();
-                });
+                console.log( JSON.stringify(stock[0]))
+                console.log(stock[0].date.getTime())
 
-                console.log(stock)
+                Lib.upload2( 'AD', stock.slice(0) )
+
+                // stock.forEach(function(day, i){
+                //     var ad = new AD({adv: day.adv, dec: day.dec, date: day.date});
+                //     ad.save();
+                // });
+
+                // console.log(stock)
 
                 console.log( 'TSE AD Success ' + new Date() + ' date: ' + stock.length );
                 // process.exit()

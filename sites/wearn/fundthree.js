@@ -9,6 +9,8 @@
 var Crawler = require("crawler");
 var Lib = require("../../lib.js");
 
+var table_name = 'FundThree';
+
 function getValue( tr ){
     
     var buy = tr.children[3].children[0].children[0].data;
@@ -38,7 +40,7 @@ var update = function update( mongoose ){
     });
 
     // model
-    var FundThree = mongoose.model('FundThree', FundThreeSchema);
+    var FundThree = mongoose.model( table_name, FundThreeSchema);
 
     FundThreeSchema.pre('save', function(next){
 
@@ -72,8 +74,10 @@ var update = function update( mongoose ){
 
             today = Lib.formatTimeTwaiwanToCE(today);
 
-            var fundthree = new FundThree({ selfSelf: selfSelf, selfHedge: selfHedge, tau: tau, wai: wai, date: new Date(today) });
-            fundthree.save();
+            // var fundthree = new FundThree({ selfSelf: selfSelf, selfHedge: selfHedge, tau: tau, wai: wai, date: new Date(today) });
+            // fundthree.save();
+
+            Lib.upload2( table_name, [{ selfSelf: selfSelf, selfHedge: selfHedge, tau: tau, wai: wai, date: new Date(today) }]);
 
             console.log( 'FundThree Success', today);
         }

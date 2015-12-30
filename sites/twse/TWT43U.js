@@ -9,6 +9,8 @@
 var Crawler = require("crawler");
 var Lib = require("../../lib.js");
 
+var table_name = 'TWT43U';
+
 function getValue( tr ){
    
     var no = tr.children[1].children[0].data;
@@ -58,7 +60,7 @@ var update = function update( mongoose ){
     });
 
     // model
-    var TWT43UModel = mongoose.model('TWT43U', TWT43USchema);
+    var TWT43UModel = mongoose.model( table_name, TWT43USchema);
 
     TWT43USchema.pre('save', function(next){
 
@@ -99,7 +101,9 @@ var update = function update( mongoose ){
                 stock: stock,
             });
 
-            twt43u.save();
+            // twt43u.save();
+
+            Lib.upload2( table_name, [{date: new Date(date), stock: stock}]);
 
             console.log( 'TWT43U Success ' + new Date() );
         }

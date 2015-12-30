@@ -9,6 +9,8 @@
 var Crawler = require("crawler");
 var Lib = require("../../lib.js");
 
+var table_name = 'Taifex';
+
 function getValue( tr ){
 
     var date = Lib.formatTimeTwaiwanToCE(tr.children[1].children[0].data);
@@ -41,7 +43,7 @@ var update = function update( mongoose ){
     });
 
     // model
-    var TaifexModel = mongoose.model('Taifex', TaifexSchema);
+    var TaifexModel = mongoose.model( table_name, TaifexSchema);
 
     TaifexSchema.pre('save', function(next){
 
@@ -70,18 +72,33 @@ var update = function update( mongoose ){
 
                 var day = getValue( tr )
 
-                var taifex = new TaifexModel({ 
-                    date: new Date(day.date), 
-                    top5: day.top5, 
-                    top10: day.top10, 
-                    top5sp: day.top5sp, 
-                    top10sp: day.top10sp, 
-                    wai: day.wai, 
-                    tau: day.tau, 
-                    self: day.self, 
-                    close: day.close  });
+                // var taifex = new TaifexModel({ 
+                //     date: new Date(day.date), 
+                //     top5: day.top5, 
+                //     top10: day.top10, 
+                //     top5sp: day.top5sp, 
+                //     top10sp: day.top10sp, 
+                //     wai: day.wai, 
+                //     tau: day.tau, 
+                //     self: day.self, 
+                //     close: day.close  });
 
-                taifex.save();
+                // taifex.save();
+
+                // upload
+                Lib.upload2( table_name, [
+                        { 
+                            date: new Date(day.date), 
+                            top5: day.top5, 
+                            top10: day.top10, 
+                            top5sp: day.top5sp, 
+                            top10sp: day.top10sp, 
+                            wai: day.wai, 
+                            tau: day.tau, 
+                            self: day.self, 
+                            close: day.close 
+                        }
+                    ])
 
             });
 

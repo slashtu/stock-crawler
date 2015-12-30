@@ -9,6 +9,8 @@
 var Crawler = require("crawler");
 var Lib = require("../../lib.js");
 
+var table_name = 'TWT44U';
+
 function getValue( tr ){
 
     var no = tr.children[3].children[0].data;
@@ -28,7 +30,7 @@ var update = function update( mongoose ){
     });
 
     // model
-    var TWT44UModel = mongoose.model('TWT44U', TWT44USchema);
+    var TWT44UModel = mongoose.model( table_name, TWT44USchema);
 
     TWT44USchema.pre('save', function(next){
 
@@ -64,12 +66,14 @@ var update = function update( mongoose ){
                 stock.push(data);
             });
 
-            var twt44u = new TWT44UModel({ 
-                date: new Date(date),
-                stock: stock,
-            });
+            // var twt44u = new TWT44UModel({ 
+            //     date: new Date(date),
+            //     stock: stock,
+            // });
 
-            twt44u.save();
+            // twt44u.save();
+
+            Lib.upload2( table_name, [{date: new Date(date), stock: stock }]);
 
             console.log( 'TWT44U Success ' + new Date() );
         }

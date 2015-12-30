@@ -9,6 +9,8 @@
 var Crawler = require("crawler");
 var Lib = require("../../lib.js");
 
+var table_name = 'TWT38U';
+
 function getValue( tr ){
 
     var no = tr.children[3].children[0].data;
@@ -28,7 +30,7 @@ var update = function update( mongoose ){
     });
 
     // model
-    var TWT38UModel = mongoose.model('TWT38U', TWT38USchema);
+    var TWT38UModel = mongoose.model( table_name, TWT38USchema);
 
     TWT38USchema.pre('save', function(next){
 
@@ -64,12 +66,14 @@ var update = function update( mongoose ){
                 stock.push(data);
             });
 
-            var twt38u = new TWT38UModel({ 
-                date: new Date(date),
-                stock: stock,
-            });
+            // var twt38u = new TWT38UModel({ 
+            //     date: new Date(date),
+            //     stock: stock,
+            // });
 
-            twt38u.save();
+            // twt38u.save();
+
+            Lib.upload2( table_name, [{ date: new Date(date), stock: stock }]);
 
             console.log( 'TWT38U Success ' + new Date() );
         }

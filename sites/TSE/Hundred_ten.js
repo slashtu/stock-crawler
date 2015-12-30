@@ -7,6 +7,9 @@
 */
 
 var Crawler = require("crawler");
+var Lib = require('../../lib.js');
+
+var table_name = 'HundredTen';
 
 var update = function update( mongoose ){
 
@@ -18,7 +21,7 @@ var update = function update( mongoose ){
     });
 
     // model
-    var HundredTenModel = mongoose.model('HundredTen', HundredTen);
+    var HundredTenModel = mongoose.model( table_name, HundredTen);
 
     HundredTen.pre('save', function(next){
 
@@ -56,11 +59,13 @@ var update = function update( mongoose ){
                         stock.push({ hundred: hundred, ten: ten, date: new Date(date) });
                 });
 
-                stock.forEach(function(day , i){
-                    var trade = new HundredTenModel({ hundred: day.hundred, ten: day.ten, date: new Date(day.date)}); 
+                Lib.upload2( table_name, stock.slice(0) )
 
-                    trade.save();
-                });
+                // stock.forEach(function(day , i){
+                //     var trade = new HundredTenModel({ hundred: day.hundred, ten: day.ten, date: new Date(day.date)}); 
+
+                //     trade.save();
+                // });
 
                 console.log( 'HundredTen Success ' + new Date() + ' date: ' + stock[0].date );
                 // process.exit()

@@ -9,6 +9,8 @@
 var Crawler = require("crawler");
 var Lib = require("../../lib.js");
 
+var table_name = 'T90sb03';
+
 function getValue( tr ){
    
     var pub_no = tr.children[3].children[0].data;
@@ -44,7 +46,7 @@ var update = function update( mongoose ){
     });
 
     // model
-    var T90sb03Model = mongoose.model('T90sb03', T90sb03Schema);
+    var T90sb03Model = mongoose.model( table_name, T90sb03Schema);
 
     T90sb03Schema.pre('save', function(next){
 
@@ -82,12 +84,14 @@ var update = function update( mongoose ){
                 stock.push(data);
             });
 
-            var t90sb03 = new T90sb03Model({ 
-                date: new Date(today),
-                stock: stock,
-            });
+            // var t90sb03 = new T90sb03Model({ 
+            //     date: new Date(today),
+            //     stock: stock,
+            // });
 
-            t90sb03.save();
+            // t90sb03.save();
+
+            Lib.upload2( table_name, [{ date: new Date(today), stock: stock }]);
 
             console.log( 'T90sb03 Success ' + new Date() );
         }
