@@ -1,7 +1,7 @@
 {
   "name": "stock-crawler",
   "version": "1.0.0",
-  "description": "web page crawler, store to mongodb",
+  "description": "web page crawler, store by post api",
   "main": "app.js",
   "dependencies": {
     "crawler": "^0.4.3",
