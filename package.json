@@ -4,16 +4,19 @@
   "description": "web page crawler, store by post api",
   "main": "app.js",
   "dependencies": {
-    "crawler": "^0.4.3",
+    "crawler": "^1.0.0",
     "es6-promise": "^3.0.2",
-    "google-spreadsheet": "^1.0.1",
+    "google-spreadsheet": "^2.0.0",
     "http-post": "^0.1.1",
     "isomorphic-fetch": "^2.2.0",
-    "mongoose": "^4.2.5"
+    "mongoose": "^4.2.5",
+    "snyk": "^1.88.0"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -27,5 +30,6 @@
   "bugs": {
     "url": "https://github.com/slashtu/stock-crawler/issues"
   },
-  "homepage": "https://github.com/slashtu/stock-crawler#readme"
+  "homepage": "https://github.com/slashtu/stock-crawler#readme",
+  "snyk": true
 }
