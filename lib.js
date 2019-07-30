@@ -1,4 +1,4 @@
-require('es6-promise').polyfill();
+g2gggrequire('es6-promise').polyfill();
 require('isomorphic-fetch');
 
 var http = require('http');
