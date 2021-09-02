@@ -6,14 +6,17 @@
   "dependencies": {
     "crawler": "^0.4.3",
     "es6-promise": "^3.0.2",
-    "google-spreadsheet": "^1.0.1",
+    "google-spreadsheet": "^3.0.0",
     "http-post": "^0.1.1",
     "isomorphic-fetch": "^2.2.0",
-    "mongoose": "^4.2.5"
+    "mongoose": "^6.0.4",
+    "@snyk/protect": "latest"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "prepublish": "npm run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -27,5 +30,6 @@
   "bugs": {
     "url": "https://github.com/slashtu/stock-crawler/issues"
   },
-  "homepage": "https://github.com/slashtu/stock-crawler#readme"
+  "homepage": "https://github.com/slashtu/stock-crawler#readme",
+  "snyk": true
 }
