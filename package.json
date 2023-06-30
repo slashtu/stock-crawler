@@ -6,7 +6,7 @@
   "dependencies": {
     "crawler": "^0.4.3",
     "es6-promise": "^3.0.2",
-    "google-spreadsheet": "^1.0.1",
+    "google-spreadsheet": "^3.0.0",
     "http-post": "^0.1.1",
     "isomorphic-fetch": "^2.2.0",
     "mongoose": "^4.2.5"
