@@ -4,7 +4,7 @@
   "description": "web page crawler, store by post api",
   "main": "app.js",
   "dependencies": {
-    "crawler": "^0.4.3",
+    "crawler": "^1.2.1",
     "es6-promise": "^3.0.2",
     "google-spreadsheet": "^1.0.1",
     "http-post": "^0.1.1",
